@@ -1,0 +1,12 @@
+header.main {
+	margin: 0 0 $spacing-l 0;
+	padding-bottom: $spacing-m !important;
+	border-bottom: 1px solid $dark;
+	.site-image, .site-title, .col {
+		width: 100% !important;
+		max-width: 100% !important;
+		padding-left: 0 !important;
+		padding-right: 0 !important;
+		flex: auto;
+	}
+}

@@ -1,0 +1,11 @@
+<?php $this->htmlElement('body')->appendAttribute('class', 'media resource show'); ?>
+
+<div class="blocks">
+	<?php echo $this->pageTitle($media->displayTitle(), 2); ?>
+  <div class="inner">
+		<?php $this->trigger('view.show.before'); ?>
+		<?php echo $media->render(); ?>
+		<?php echo $media->displayValues(); ?>
+		<?php $this->trigger('view.show.after'); ?>
+	</div>
+</div>

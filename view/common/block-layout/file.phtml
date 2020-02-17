@@ -1,0 +1,44 @@
+
+<?php
+$count = sizeof( $attachments );
+$cols = 12/$count;
+$options = array(3,4,6,12);
+$closest = null;
+foreach ($options as $option) {
+  if ($closest === null || abs($cols - $closest) > abs($option - $cols)) {
+     $closest = $option;
+  }
+}
+$cols = $closest;
+?>
+<div class="item-showcase count-<?= $count; ?>">
+    <div class="row">
+    <?php foreach ($attachments as $attachment): ?>
+        <div class="item col-<?= $cols ?>">
+        <?php
+        $item = $attachment->item();
+        if ($item):
+            $media = $attachment->media() ?: $item->primaryMedia();
+            if ($media):
+                echo $item->linkRaw($this->thumbnail($media, $this->thumbnailType));
+            endif; ?>
+            <div class="text">
+                <?= $item->link($item->displayTitle()); ?>
+                <div class="metadata">
+                    <?php if($format = $item->value('dcterms:format')): ?>
+                        <span class="format"><em><?= $format; ?></em></span>    
+                    <?php endif; ?>
+                    <?php if($date = $item->value('dcterms:date')): ?>
+                        <span class="date"><em><?= $date; ?></em></span>    
+                    <?php endif; ?>
+                </div>
+                <?php $caption = $attachment->caption(); ?>
+                <?php if ($caption): ?>
+                    <div class="caption"><?= $caption; ?></div>
+                <?php endif; ?>
+            </div>
+        <?php endif; ?>
+        </div>
+    <?php endforeach; ?>
+    </div>
+</div>
