@@ -17,19 +17,13 @@ if (isset($query['site_id'])) {
             $defaultSiteId = $this->setting('default_site');
             $defaultSiteResponse = $this->api()->read('sites', $defaultSiteId);
             $defaultSite = $defaultSiteResponse->getContent();
-            // $siblings = $defaultSite->linkedPages();
             $siblings = $this->api()->search('sites')->getContent();
             foreach($siblings as $sibling):
                 if($sibling->id() != $defaultSiteId) {
                     echo '<option value="'.$sibling->id().'">' . $sibling->title() . '</option>';
                 }
             endforeach;
-            // print_r( $this->api()->read('sites') );
             ?>
         </select>
-        <?// php echo $this->siteSelect([
-        //     'name' => 'site_id',
-        //     'attributes' => ['id' => 'site_id', 'value' => $siteId]
-        // ]); ?>
     </div>
 </div>
