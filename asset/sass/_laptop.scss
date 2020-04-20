@@ -1,0 +1,133 @@
+table {
+	margin: $spacing-l 0;
+	border-collapse: collapse;
+}
+
+th,
+td {
+	text-align: left;
+	padding: $spacing-s $spacing-m;
+	padding-bottom: $spacing-s - 1px;
+	border-bottom: 1px solid $medium;
+}
+
+/* @group ----- Header ----- */
+
+
+/* @end */
+
+
+/* @group ----- Navigation ----- */
+
+.sub-menu ul {
+	border-bottom: 1px solid $light;
+	padding-bottom: ($spacing-m - 1px);
+}
+
+.sub-menu li {
+	display: inline-block;
+	border: 0;
+	padding: 0;
+	margin-right: $spacing-m;
+
+	&:first-of-type {
+		border: 0;
+		padding: 0;
+	}
+}
+
+#search {
+	left: 75%;
+	border-left: 1px solid $light;
+	padding: $spacing-s;
+}
+
+#search form input[type="text"],
+#search form button[type="submit"] {
+	height: $base-line-height;
+	font-size: .75 * $base-font-size;
+	line-height: $base-line-height;
+}
+
+#search form button[type="submit"] {
+	width: $base-line-height;
+	height: $base-line-height;
+	padding: 0;
+
+	&:before {
+		line-height: $base-line-height;
+	}
+}
+
+/* @end */
+
+/* @group ----- Resource List ----- */
+
+ul.resource-list .resource img {
+	height: auto;
+}
+
+/* @end */
+
+/* @group ----- Item Set ----- */
+
+body.item-set #content {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: flex-start;
+	justify-content: flex-end;
+
+	& > h2,
+	& > h3 {
+		width: 100%;
+	}
+}
+
+body.item-set .metadata {
+	width: span(4 of 12 alpha);
+	border-left: 5px solid $light;
+	padding-left: $gutter;
+	margin-right: $gutter;
+}
+
+body.item-set .metadata h4:first-of-type {
+	margin-top: 0;
+}
+
+body.item-set #content .metadata ~ * {
+	width: span(8 of 12 omega);
+	border-left: 1px solid $light;
+	padding-left: $gutter;
+}
+
+body.item-set .item-set-items h3 {
+	margin-top: 0;
+}
+
+body.item-set .metadata ~ nav.pagination:first-of-type {
+	margin-bottom: 0;
+}
+
+
+/* @end */
+
+/* @group ----- Page and blocks ----- */
+
+.preview-block {
+	clear: both;
+}
+
+ul.preview.resource-list li:first-of-type {
+	border-top: 1px solid $light;
+	padding-top: ($spacing-l - 1px);
+}
+
+/* @end */
+
+/* @group ----- Footer ----- */
+
+footer {
+	padding: 0 (2 * $gutter) $spacing-l;
+}
+
+/* @end */

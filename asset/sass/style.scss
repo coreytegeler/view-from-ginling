@@ -1,19 +1,23 @@
 @import "normalize";
-@import "base";
+@import "vars";
 @import "screen";
 
 @media print {
-    @import "print";
+	@import "print";
 }
 
-@media screen and (min-width:769px) {
-    @import "desktop";
+@media screen and (max-width: 1200px) {
+	@import "desktop";
 }
 
-@media screen and (max-width:767px) {
-    @import "tablet";
+@media screen and (max-width: 992px) {
+	@import "laptop";
 }
 
-@media screen and (max-width:576px) {
-    @import "mobile";
+@media screen and (max-width: 768px) {
+	@import "tablet";
+}
+
+@media screen and (max-width: 576px) {
+	@import "mobile";
 }

@@ -55,24 +55,24 @@ gulp.task('compile-coffee', function() {
 
 gulp.task('watch', function() {
   gulp.watch(paths.sass, ['compile-sass']);
-  gulp.watch(paths.coffee, ['compile-coffee']);
+  // gulp.watch(paths.coffee, ['compile-coffee']);
 });
 
 gulp.task('default', [
   'compile-sass',
-  'compile-coffee',
+  // 'compile-coffee',
   'watch'
 ]);
 
 gulp.task('dev', [
   'compile-sass',
-  'compile-coffee',
+  // 'compile-coffee',
   'watch'
 ]);
 
-gulp.task('prod', [
+gulp.task('build', [
   'compile-sass',
-  'compile-coffee'
+  // 'compile-coffee'
 ]);
 
 function log(message) {

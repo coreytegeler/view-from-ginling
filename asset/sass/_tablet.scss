@@ -1,12 +1,41 @@
+.max-width {
+	padding-left: $spacing-m;
+	padding-right: $spacing-m;
+}
+.row {
+	margin-left: 0 !important;
+	margin-right: 0 !important;
+	padding-left: 0 !important;
+	padding-right: 0 !important;
+}
+
 header.main {
 	margin: 0 0 $spacing-l 0;
 	padding-bottom: $spacing-m !important;
 	border-bottom: 1px solid $dark;
-	.site-image, .site-title, .col {
-		width: 100% !important;
-		max-width: 100% !important;
-		padding-left: 0 !important;
-		padding-right: 0 !important;
-		flex: auto;
+}
+
+nav.fixed {
+	h1 {
+		font-size: $md-font-size;
+		line-height: $md-line-height;
+	}
+	ul li a {
+		font-size: $sm-font-size;
+		line-height: $sm-line-height;
+	}
+	body.fix-nav & {
+		height: unset;
 	}
 }
+
+nav.side {
+	position: static !important;
+	left: unset !important;
+	top: unset !important;
+	padding: 0 !important;
+	body.fix-nav & {
+
+	}
+}
+

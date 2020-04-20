@@ -40,19 +40,19 @@ h1, h2, h3, h4 {
   font-family: "Archivo Narrow", sans-serif; }
 
 h1 {
-  font-size: 1.9em;
-  line-height: 1.3em; }
+  font-size: 1.9rem;
+  line-height: 1.1em; }
 
 h2 {
-  font-size: 1.5em;
-  line-height: 1.3em; }
+  font-size: 1.7rem;
+  line-height: 1.1em; }
 
 h3 {
-  font-size: 1.3em;
+  font-size: 1.4rem;
   line-height: 1.1em; }
 
 h4 {
-  font-size: 0.8em;
+  font-size: 1rem;
   line-height: 1.3em; }
 
 img {
@@ -149,7 +149,7 @@ select {
 
 /* @group ----- Header ----- */
 header.main {
-  margin: 0 0 75px;
+  padding-bottom: 90px;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
           flex-direction: row; }
@@ -158,8 +158,8 @@ header.main {
     color: #072605; }
   header.main .site-title .row {
     height: 100%;
-    -webkit-box-align: end;
-            align-items: flex-end; }
+    -webkit-box-align: start;
+            align-items: flex-start; }
   header.main .site-title a {
     display: table;
     margin: auto 0; }
@@ -172,7 +172,7 @@ header nav {
   display: table;
   padding: 15px 0;
   color: #072605;
-  font-size: 1.3em;
+  font-size: 1.4rem;
   line-height: 1.1em; }
   header nav ul.navigation {
     -webkit-box-orient: horizontal;
@@ -202,51 +202,10 @@ header nav {
 
 nav {
   font-family: "Archivo Narrow", sans-serif; }
-  nav.top {
-    padding-left: 5px; }
-    nav.top .site-image {
-      padding-left: 0; }
-  nav.side h2 {
-    width: 100%;
-    padding: 0 0 30px 0; }
-  nav.side ul.navigation {
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-            flex-direction: column;
-    padding: 0 0 30px 0; }
-    nav.side ul.navigation li {
-      width: 100%; }
-      nav.side ul.navigation li a {
-        margin: 0 0 15px 0;
-        line-height: 1em; }
   nav.home ul.navigation > li > a, nav.home ul.navigation > li:hover > a {
     display: none !important; }
   nav.home ul.navigation > li.active ul {
     display: block; }
-  nav.fixed {
-    width: 100%;
-    background: #f2f0df;
-    border-bottom: 1px solid #0dae0b;
-    position: fixed;
-    left: 0;
-    top: 0;
-    z-index: 999;
-    display: none; }
-    nav.fixed h1, nav.fixed ul li a {
-      font-size: 0.8em;
-      line-height: 1.3em; }
-    nav.fixed ul.navigation {
-      display: -webkit-inline-box;
-      display: inline-flex; }
-      nav.fixed ul.navigation li {
-        height: auto; }
-        nav.fixed ul.navigation li ul {
-          top: 1em; }
-    nav.fixed #search-form {
-      display: inline;
-      display: none; }
-    nav.fixed.show {
-      display: block; }
   nav ul.navigation {
     list-style: none;
     position: relative;
@@ -288,6 +247,42 @@ nav {
       nav ul.navigation li:hover ul {
         display: block; }
 
+nav.top .site-image {
+  padding-left: 0; }
+
+nav.fixed {
+  width: 100%;
+  background: #f2f0df;
+  border-bottom: 1px solid #0dae0b;
+  position: fixed;
+  left: -99999px;
+  top: 0;
+  pointer-events: none;
+  z-index: 9999; }
+  nav.fixed h1, nav.fixed ul li a {
+    font-size: 1.4rem;
+    line-height: 1.1em; }
+  nav.fixed ul.navigation {
+    display: -webkit-inline-box;
+    display: inline-flex; }
+    nav.fixed ul.navigation li {
+      height: auto; }
+      nav.fixed ul.navigation li ul {
+        top: calc(1em + 17px); }
+        nav.fixed ul.navigation li ul::after {
+          content: '';
+          width: 100%;
+          height: calc(1em - 1px);
+          position: absolute;
+          top: calc(-1em + 1px);
+          left: 0; }
+  nav.fixed #search-form {
+    display: inline;
+    display: none; }
+  body.fix-nav nav.fixed {
+    left: 0;
+    pointer-events: all; }
+
 .sub-menu ul {
   padding-left: 0;
   list-style-type: none;
@@ -301,6 +296,26 @@ nav {
   .sub-menu li:first-of-type {
     border-top: 1px solid #f2f0df;
     padding-top: 7px; }
+
+nav.side {
+  padding: 0 15px; }
+  nav.side h2 {
+    width: 100%;
+    padding: 0 0 30px 0; }
+  nav.side ul.navigation {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+            flex-direction: column;
+    padding: 0 0 30px 0; }
+    nav.side ul.navigation li {
+      width: 100%; }
+      nav.side ul.navigation li a {
+        margin: 0 0 15px 0;
+        font-size: 1.4rem;
+        line-height: 1.1em; }
+  body.fix-nav nav.side {
+    position: fixed;
+    padding: 30px 30px 0 30px; }
 
 /* @end */
 /* @group ----- Search ----- */
@@ -410,7 +425,7 @@ footer {
   float: none;
   clear: both;
   margin: 100px 0 30px 0;
-  font-size: 0.8em;
+  font-size: 1rem;
   line-height: 1.3em;
   text-align: center; }
   footer a {
@@ -435,6 +450,8 @@ footer {
 /* @group ----- Page and Blocks ----- */
 #content {
   padding-bottom: 30px; }
+  #content > .row > .col {
+    padding-top: 30px; }
 
 .universal-viewer-block {
   width: 100%;
@@ -461,7 +478,7 @@ footer {
     .blocks p a, .blocks .inner a, .blocks blockquote a {
       text-decoration: underline; }
   .blocks sup {
-    font-size: 0.8em;
+    font-size: 1rem;
     line-height: 1em; }
   .blocks .item-showcase {
     width: 100%;
@@ -502,9 +519,7 @@ footer {
   clear: both;
   display: -webkit-box;
   display: flex;
-  flex-wrap: wrap;
-  font-size: 0.8em;
-  line-height: 1.3em; }
+  flex-wrap: wrap; }
   .item-showcase .row {
     width: 100%; }
   .item-showcase .resource, .item-showcase .item {
@@ -670,12 +685,12 @@ body .item, body .resource {
     body .item .text h4, body .resource .text h4 {
       margin-top: 0; }
     body .item .text .metadata, body .resource .text .metadata {
-      font-size: 0.8em;
+      font-size: 1rem;
       line-height: 1.3em; }
       body .item .text .metadata span:not(:last-of-type)::after, body .resource .text .metadata span:not(:last-of-type)::after {
         content: ', '; }
     body .item .text .description, body .item .text .caption, body .resource .text .description, body .resource .text .caption {
-      font-size: 0.8em;
+      font-size: 1rem;
       line-height: 1.3em;
       overflow: hidden;
       position: relative;
@@ -821,6 +836,10 @@ a.metadata-browse-link {
 .toggler {
   display: none; }
 
+.network-map, .exploratory-map-block {
+  z-index: 999;
+  background-color: #f2f0df; }
+
 /* @end */
 @media print {
   /* Welcome to Compass. Use this file to define print styles.
@@ -829,7 +848,7 @@ a.metadata-browse-link {
   header, footer, nav {
     display: none; } }
 
-@media screen and (min-width: 769px) {
+@media screen and (max-width: 992px) {
   table {
     margin: 30px 0;
     border-collapse: collapse; }
@@ -913,28 +932,49 @@ a.metadata-browse-link {
     padding: 0 20px 30px; }
   /* @end */ }
 
-@media screen and (max-width: 767px) {
-  header.main {
-    margin: 0 0 30px 0;
-    padding-bottom: 15px !important;
-    border-bottom: 1px solid #072605; }
-    header.main .site-image, header.main .site-title, header.main .col {
-      width: 100% !important;
-      max-width: 100% !important;
-      padding-left: 0 !important;
-      padding-right: 0 !important;
-      -webkit-box-flex: 1;
-              flex: auto; } }
-
-@media screen and (max-width: 576px) {
+@media screen and (max-width: 768px) {
+  .max-width {
+    padding-left: 15px;
+    padding-right: 15px; }
   .row {
     margin-left: 0 !important;
     margin-right: 0 !important;
     padding-left: 0 !important;
     padding-right: 0 !important; }
-  .max-width {
-    padding-left: 15px;
-    padding-right: 15px; }
+  header.main {
+    margin: 0 0 30px 0;
+    padding-bottom: 15px !important;
+    border-bottom: 1px solid #072605; }
+  nav.fixed h1 {
+    font-size: 1.4rem;
+    line-height: 1.1em; }
+  nav.fixed ul li a {
+    font-size: 1rem;
+    line-height: 1.3em; }
+  body.fix-nav nav.fixed {
+    height: unset; }
+  nav.side {
+    position: static !important;
+    left: unset !important;
+    top: unset !important;
+    padding: 0 !important; } }
+
+@media screen and (max-width: 576px) {
+  header.main .site-image, header.main .site-title, header.main .col {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    -webkit-box-flex: 1;
+            flex: auto; }
+  nav.fixed {
+    height: unset; }
+    nav.fixed h1 {
+      font-size: 1.4rem;
+      line-height: 1.1em; }
+    nav.fixed ul li a {
+      font-size: 1rem;
+      line-height: 1.3em; }
   nav.side ul.navigation {
     -webkit-box-orient: horizontal;
     -webkit-box-direction: normal;

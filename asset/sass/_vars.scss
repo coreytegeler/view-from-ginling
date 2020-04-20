@@ -1,5 +1,4 @@
 // Colors
-
 $dark: #072605;
 $medium: lighten($dark, 20%);
 $highlight: #0dae0b;
@@ -11,14 +10,14 @@ $lighter: #fffbf8;
 @import 'https://fonts.googleapis.com/css?family=Archivo+Black|Archivo+Narrow:400,400i,500,500i,600,600i,700,700i|Archivo:400,400i,500,500i,600,600i,700,700i&subset=latin-ext,vietnamese';
 $base-font-size: 18px;
 $base-line-height: 1.6em;
-$sm-font-size: .8em;
+$sm-font-size: 1rem;
 $sm-line-height: 1.3em;
-$md-font-size: 1.3em;
+$md-font-size: 1.4rem;
 $md-line-height: 1.1em;
-$lg-font-size: 1.5em;
-$lg-line-height: 1.3em;
-$xl-font-size: 1.9em;
-$xl-line-height: 1.3em;
+$lg-font-size: 1.7rem;
+$lg-line-height: 1.1em;
+$xl-font-size: 1.9rem;
+$xl-line-height: 1.1em;
 
 $sans-font: 'IBM Plex Sans', sans-serif;
 $base-font: 'Archivo', sans-serif;

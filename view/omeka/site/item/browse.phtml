@@ -2,53 +2,46 @@
 $escape = $this->plugin('escapeHtml');
 $this->htmlElement('body')->appendAttribute('class', 'item resource browse');
 $query = $this->params()->fromQuery();
-if (isset($itemSet)):
+if(isset($itemSet)) {
 	$this->htmlElement('body')->appendAttribute('class', 'item-set');
 	$query['item_set_id'] = $itemSet->id();
-endif;
+}
 $headingTerm = $this->siteSetting('browse_heading_property_term', 'dcterms:title');
 $bodyTerm = $this->siteSetting('browse_body_property_term', 'dcterms:description');
 $itemSetShow = isset($itemSet);
 ?>
-	<div class="col col-12 col-md-4">
+	<div class="col col-auto">
 		<?php echo $this->pagination(); ?>
 	</div>
-	<div class="col col-12 col-md-8">
+	<div class="col col-auto">
 		<?php echo $this->hyperlink($this->translate('Advanced search'), $this->url('site/resource', ['controller' => 'item', 'action' => 'search'], ['query' => $query], true), ['class' => 'advanced-search']); ?>
 	</div>
 </div>
-<div class="row">  
-	<div class="col col-12 blocks">
+<div class="row blocks resource-list justify-content-md-center">  
 		<?php $this->trigger('view.browse.before'); ?>
-		<div class="resource-list">
-			<div class="row resource-list justify-content-md-center">
-				<?php
-				foreach ($items as $item):
-					$heading = $item->value($headingTerm, ['default' => $this->translate('[Untitled]')]);
-					$body = $item->value($bodyTerm);
-					$format = $item->value('dcterms:format');
-					$date = $item->value('dcterms:date');
-				?>
-					<div class="item resource col-12 col-sm-6 col-md-4">
-						<?php if ($thumb = $this->thumbnail($item, 'medium')): ?>
-							<div class="image">
-								<?php echo $item->linkRaw($thumb); ?>
-							</div>
-						<?php endif; ?>
-						<div class="text">
-							<strong><?= $item->link($heading); ?></strong>
-							<div class="metadata">
-								<span class="format"><em><?= $format; ?></em></span>
-								<span class="date"><em><?= $date; ?></em></span>
-							</div>
-							<?php if ($body): ?>
-								<div class="caption"><?= $body; ?></div>
-							<?php endif; ?>
-						</div>
+		<?php foreach ($items as $item) {
+			$heading = $item->value($headingTerm, ['default' => $this->translate('[Untitled]')]);
+			$body = $item->value($bodyTerm);
+			$format = $item->value('dcterms:format');
+			$date = $item->value('dcterms:date'); ?>
+			<div class="item resource col-12 col-sm-6 col-md-4">
+				<?php if ($thumb = $this->thumbnail($item, 'medium')): ?>
+					<div class="image">
+						<?php echo $item->linkRaw($thumb); ?>
 					</div>
-				<?php endforeach; ?>
+				<?php endif; ?>
+				<div class="text">
+					<strong><?= $item->link($heading); ?></strong>
+					<div class="metadata">
+						<span class="format"><em><?= $format; ?></em></span>
+						<span class="date"><em><?= $date; ?></em></span>
+					</div>
+					<?php if ($body): ?>
+						<div class="caption"><?= $body; ?></div>
+					<?php endif; ?>
+				</div>
 			</div>
-		</div>
+		<?php } ?>
 	</div>
 <?php echo ($itemSetShow) ? '</div>' : ''; ?>
 <?php $this->trigger('view.browse.after'); ?>

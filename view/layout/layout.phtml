@@ -10,10 +10,13 @@ $this->headLink()->prependStylesheet($this->assetUrl('css/bootstrap-grid.min.css
 $this->headLink()->prependStylesheet($this->assetUrl('css/style.css'));
 $this->headLink()->prependStylesheet($this->assetUrl('css/iconfonts.css', 'Omeka'));
 $this->headLink()->prependStylesheet('//fonts.googleapis.com/css?family=Open+Sans:400,400italic,600,600italic,700italic,700');
-$this->headScript()->prependFile($this->assetUrl('js/default.js'));
-$this->headScript()->prependFile($this->assetUrl('js/global.js', 'Omeka'));
+
 $this->headScript()->prependFile($this->assetUrl('js/ginling-public-script.js'));
-$this->headScript()->prependFile($this->assetUrl('vendor/jquery/jquery.min.js', 'Omeka'));
+$this->headScript()->prependFile($this->assetUrl('js/jquery-3.3.1.min.js'));
+// $this->headScript()->prependFile($this->assetUrl('js/default.js'));
+// $this->headScript()->prependFile($this->assetUrl('js/global.js', 'Omeka'));
+
+
 $this->trigger('view.layout');
 $title = $this->pageTitle($site->title());
 $userBar = $this->partial('common/user-bar', ['site' => $site]);
@@ -26,13 +29,13 @@ $userBar = $this->partial('common/user-bar', ['site' => $site]);
 		<?php echo $this->headLink(); ?>
 		<?php echo $this->headStyle(); ?>
 		<?php echo $this->headScript(); ?>
-		<link rel="apple-touch-icon" sizes="180x180" href="<?= $this->assetUrl('favicons/apple-touch-icon.png'); ?>">
-		<link rel="icon" type="image/png" sizes="32x32" href="<?= $this->assetUrl('favicons/favicon-32x32.png'); ?>">
-		<link rel="icon" type="image/png" sizes="16x16" href="<?= $this->assetUrl('favicons/favicon-16x16.png"'); ?>
-		<link rel="manifest" href="<?= $this->assetUrl('favicons/site.webmanifest');?>">
-		<link rel="mask-icon" href="<?= $this->assetUrl('favicons/safari-pinned-tab.svg'); ?>" color="#ffffff">
-		<meta name="msapplication-TileColor" content="#da532c">
-		<meta name="theme-color" content="#ffffff">
+		<link rel="apple-touch-icon" sizes="180x180" href="<?= $this->assetUrl('favicons/apple-touch-icon.png'); ?>"/>
+		<link rel="icon" type="image/png" sizes="32x32" href="<?= $this->assetUrl('favicons/favicon-32x32.png'); ?>"/>
+		<link rel="icon" type="image/png" sizes="16x16" href="<?= $this->assetUrl('favicons/favicon-16x16.png"'); ?>"/>
+		<link rel="manifest" href="<?= $this->assetUrl('favicons/site.webmanifest');?>"/>
+		<link rel="mask-icon" href="<?= $this->assetUrl('favicons/safari-pinned-tab.svg'); ?>" color="#ffffff"/>
+		<meta name="msapplication-TileColor" content="#da532c"/>
+		<meta name="theme-color" content="#ffffff"/>
 	</head>
 
 	<?php
@@ -50,39 +53,40 @@ $userBar = $this->partial('common/user-bar', ['site' => $site]);
 				<div class="site-title col col-12 col-md-8">
 					<div class="row">
 						<nav class="top">
-							<?php
-								$defaultSiteId = $this->setting('default_site');
-								$defaultSiteResponse = $this->api()->read('sites', $defaultSiteId);
-								$defaultSite = $defaultSiteResponse->getContent();
+							<?php $defaultSiteId = $this->setting('default_site');
+							$defaultSiteResponse = $this->api()->read('sites', $defaultSiteId);
+							$defaultSite = $defaultSiteResponse->getContent(); ?>
+							<a href="<?= $this->url('top') ?>">
+								<h1>
+									<?= $this->setting('installation_title', 'Omeka S') ?>
+								</h1>
+							</a>
 
-								$title = 
-								'<a href="'.$this->url('top').'"><h1>'.
-									$this->setting('installation_title', 'Omeka S').
-								'</h1></a>';
-								echo $title;
-
-								$nav = 
-								'<div class="global"><div'.
-									'<div class="mobile-site-title">'.
-										$this->setting('installation_title', 'Omeka S').
-									'</div>'.
-									$defaultSite->publicNav().
-									$this->partial('common/search-form').
-								'</div>';
-								echo $nav;
-							?>
+							<div class="global">
+								<div class="mobile-site-title">
+									<?= $this->setting('installation_title', 'Omeka S'); ?>
+								</div>
+								<?= $defaultSite->publicNav(); ?>
+								<?= $this->partial('common/search-form'); ?>
+							</div>
 						</nav>
 						<nav class="fixed">
 							<div class="max-width">
 								<div class="row">
 									<div class="col col-4 site-title">
-										<div class="row">
-											<?= $title; ?>
-										</div>
+										<a href="<?= $this->url('top') ?>">
+											<h1>
+												<?= $this->setting('installation_title', 'Omeka S') ?>
+											</h1>
+										</a>
 									</div>
 									<div class="col col-8">
-										<div class="row">
-											<?= $nav; ?>	
+										<div class="global">
+											<div class="mobile-site-title">
+												<?= $this->setting('installation_title', 'Omeka S'); ?>
+											</div>
+											<?= $defaultSite->publicNav(); ?>
+											<?= $this->partial('common/search-form'); ?>
 										</div>
 									</div>
 								</div>
@@ -95,10 +99,10 @@ $userBar = $this->partial('common/user-bar', ['site' => $site]);
 		<div id="content" class="max-width" role="main">
 			<div class="row">
 				<?php
-				$path =  $_SERVER["REQUEST_URI"];
-				$parts = explode('/', $path);
+				$path = $_SERVER["REQUEST_URI"];
+				$parts = explode( '/', $path );
 				?>
-				<?php if(substr( $parts['2'], 0, 4 ) != 'item'): ?>
+				<?php if( array_key_exists( '2', $parts ) && substr( $parts['2'], 0, 4 ) != 'item'): ?>
 					<div class="col col-12 col-md-4">
 					<?php if($site->id() == $defaultSiteId): ?>
 						<nav class="side row home">
