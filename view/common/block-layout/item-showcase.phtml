@@ -1,20 +1,19 @@
-
 <?php
-$count = sizeof( $attachments );
-$cols = 12/$count;
-$options = array(3,4,6,12);
-$closest = null;
-foreach ($options as $option) {
-  if ($closest === null || abs($cols - $closest) > abs($option - $cols)) {
-     $closest = $option;
-  }
-}
-$cols = $closest;
+// $count = sizeof( $attachments );
+// $cols = 12/$count;
+// $options = array(3,4,6,12);
+// $closest = null;
+// foreach ($options as $option) {
+//   if ($closest === null || abs($cols - $closest) > abs($option - $cols)) {
+//      $closest = $option;
+//   }
+// }
+// $cols = $closest;
 ?>
-<div class="item-showcase count-<?= $count; ?>">
+<div class="item-showcase">
     <div class="row">
     <?php foreach ($attachments as $attachment): ?>
-        <div class="item col-<?= $cols ?>">
+        <div class="item col-12 col-sm-6 col-md-6 col-lg-4">
         <?php
         $item = $attachment->item();
         if ($item):

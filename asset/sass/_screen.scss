@@ -625,8 +625,8 @@ footer {
 	}
 	.item-showcase {
 		width: 100%;
-		// margin: #{$spacing-l*2} 0 $spacing-l 0;
-		margin: 0 0 $spacing-l 0;
+		margin-top: 0;
+		margin-bottom: $spacing-l;
 		&.count-1 {
 			// width: 100%;
 			// margin: 0 0 $spacing-m $spacing-m;
@@ -635,9 +635,6 @@ footer {
 				margin: 0;
 				float: none;
 			}
-		}
-		.row {
-	    flex-direction: row;
 		}
 		.item {
 			.text {
@@ -681,14 +678,14 @@ footer {
 }
 
 .item-showcase {
-	margin: $spacing-l*2 0 0 0;
+	margin-top: $spacing-l*2;
 	overflow: hidden;
 	text-align: center;
 	clear: both;
 	display: flex;
 	flex-wrap: wrap;
 	.row {
-		width: 100%;
+		// width: 100%;
 	}
 	.resource, .item {
 		vertical-align: top;

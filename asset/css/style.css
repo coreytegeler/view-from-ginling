@@ -482,15 +482,12 @@ footer {
     line-height: 1em; }
   .blocks .item-showcase {
     width: 100%;
-    margin: 0 0 30px 0; }
+    margin-top: 0;
+    margin-bottom: 30px; }
     .blocks .item-showcase.count-1.full {
       width: 100%;
       margin: 0;
       float: none; }
-    .blocks .item-showcase .row {
-      -webkit-box-orient: horizontal;
-      -webkit-box-direction: normal;
-              flex-direction: row; }
     .blocks .item-showcase .item .text {
       text-align: left; }
   .blocks .file.left .attachments, .blocks .file.right .attachments {
@@ -513,15 +510,13 @@ footer {
     max-width: 100%; }
 
 .item-showcase {
-  margin: 60px 0 0 0;
+  margin-top: 60px;
   overflow: hidden;
   text-align: center;
   clear: both;
   display: -webkit-box;
   display: flex;
   flex-wrap: wrap; }
-  .item-showcase .row {
-    width: 100%; }
   .item-showcase .resource, .item-showcase .item {
     vertical-align: top;
     margin-bottom: 30px;
