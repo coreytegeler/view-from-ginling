@@ -189,7 +189,7 @@ select {
 /* @group ----- Header ----- */
 header.main {
 	// width: 100%;
-	padding-bottom: #{3 * $spacing-l};
+	padding-bottom: $spacing-l;
 	// padding: $spacing-m #{$spacing-xl - $spacing-s};
 	// max-width: $max-width;
 	flex-direction: row;
@@ -407,7 +407,7 @@ nav.side {
 	}
 	body.fix-nav & {
 		position: fixed;
-		padding: $spacing-l $spacing-l 0 $spacing-l;
+		padding: $spacing-l $spacing-m 0 $spacing-l;
 	}
 }
 
@@ -574,9 +574,13 @@ footer {
 /* @group ----- Home ----- */
 
 .exhibits {
-	margin: 0 0 $spacing-xl 0;
-	h1 {
-		margin: 0 0 $spacing-m 0;
+	padding: $spacing-l 0 $spacing-xl 0;
+	background-color: $light;
+	position: relative;
+	border-top: 1px solid $highlight;
+	h2 {
+		margin: 0 0 $spacing-l 0;
+		text-align: center;
 	}
 }
 

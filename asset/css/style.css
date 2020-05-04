@@ -149,7 +149,7 @@ select {
 
 /* @group ----- Header ----- */
 header.main {
-  padding-bottom: 90px;
+  padding-bottom: 30px;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
           flex-direction: row; }
@@ -315,7 +315,7 @@ nav.side {
         line-height: 1.1em; }
   body.fix-nav nav.side {
     position: fixed;
-    padding: 30px 30px 0 30px; }
+    padding: 30px 15px 0 30px; }
 
 /* @end */
 /* @group ----- Search ----- */
@@ -442,9 +442,13 @@ footer {
 /* @end */
 /* @group ----- Home ----- */
 .exhibits {
-  margin: 0 0 100px 0; }
-  .exhibits h1 {
-    margin: 0 0 15px 0; }
+  padding: 30px 0 100px 0;
+  background-color: #f2f0df;
+  position: relative;
+  border-top: 1px solid #0dae0b; }
+  .exhibits h2 {
+    margin: 0 0 30px 0;
+    text-align: center; }
 
 /* @end */
 /* @group ----- Page and Blocks ----- */

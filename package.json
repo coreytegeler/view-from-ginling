@@ -1,6 +1,6 @@
 {
   "name": "view-from-ginling",
-  "version": "1.2.0",
+  "version": "2.1.0",
   "description": "A custom theme for Omeka S.",
   "author": "Corey Tegeler",
   "main": "gulpfile.js",

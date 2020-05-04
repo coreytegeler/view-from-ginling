@@ -1,5 +1,5 @@
 <?php
-$ver = 2.0
+$ver = 2.1;
 $escape = $this->plugin('escapeHtml');
 $setting = $this->plugin('escapeHtml');
 $this->htmlElement('html')->setAttribute('lang', $this->lang());
@@ -20,7 +20,7 @@ $this->headScript()->prependFile($this->assetUrl('js/jquery-3.3.1.min.js'));
 
 $this->trigger('view.layout');
 $title = $this->pageTitle($site->title());
-$userBar = $this->partial('common/user-bar', ['site' => $site]);
+// $userBar = $this->partial('common/user-bar', ['site' => $site, 'user' => $user]);
 ?>
 <?php echo $this->doctype(); ?>
 <?php echo $this->htmlElement('html'); ?>
@@ -43,7 +43,7 @@ $userBar = $this->partial('common/user-bar', ['site' => $site]);
 	echo $this->htmlElement('body');
 	echo $this->elements[$this->element];
 	?>
-		<?php echo $userBar; ?>
+		<?#php echo $userBar; ?>
 		<header class="main max-width">
 			<div class="row">
 				<div class="site-image col col-12 col-md-4 d-none d-md-block">
@@ -105,16 +105,19 @@ $userBar = $this->partial('common/user-bar', ['site' => $site]);
 				?>
 				<?php if( array_key_exists( '2', $parts ) && substr( $parts['2'], 0, 4 ) != 'item'): ?>
 					<div class="col col-12 col-md-4">
-					<?php if($site->id() == $defaultSiteId): ?>
-						<nav class="side row home">
-					<?php else: ?>
-						<nav class="side row"><h2><?= $site->title(); ?></h2>
-					<?php endif; ?>
-					<div class="local"><?= $site->publicNav();?></div>
-					</div><div class="col col-12 col-md-8">
+						<?php if($site->id() == $defaultSiteId): ?>
+							<nav class="side row home">
+						<?php else: ?>
+							<nav class="side row"><h2><?= $site->title(); ?></h2>
+						<?php endif; ?>
+						<div class="local"><?= $site->publicNav();?></div>
+					</div>
+					<div class="col col-12 col-md-8">
+						<?= $this->content; ?>
+					</div>
+				<?php else: ?>
+					<?= $this->content; ?>
 				<?php endif; ?>
-				<?= $this->content; ?>
-				</div>
 			</div>
 		</div>
 		<footer class="footer max-width">
